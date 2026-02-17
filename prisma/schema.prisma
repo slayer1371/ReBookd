@@ -149,6 +149,7 @@ model Business {
   name        String
   slug        String           @unique
   description String?          @db.Text
+  email       String?          // Contact email for notifications
   logoUrl     String?
   coverUrl    String?
   category    BusinessCategory
