@@ -40,39 +40,58 @@ export async function notifyMatchingUsers(cancellation: CancellationForMatching)
     const bizLng = cancellation.business.lng;
     const category = cancellation.business.category;
 
-    // 1. Find users with matching category preference who are within range
-    const preferenceMatches = await prisma.userPreference.findMany({
+    // 1. Find users with matching category preference (Explicit YES or Default YES)
+    const matchedUsers = await prisma.user.findMany({
       where: {
-        category: category as never,
-        enabled: true,
-      },
-      include: {
-        user: {
-          select: {
-            id: true,
-            lat: true,
-            lng: true,
-            searchRadius: true,
-            role: true,
+        OR: [
+          {
+            role: { not: "BUSINESS" }, // Explicitly exclude business role
           },
-        },
+          {
+            role: null, // Include users with no role (though they should be redirected)
+          },
+        ],
+        AND: [
+          {
+            OR: [
+              {
+                preferences: {
+                  some: {
+                    category: category as never,
+                    enabled: true,
+                  },
+                },
+              },
+              {
+                preferences: {
+                  none: {
+                    category: category as never,
+                  },
+                },
+              },
+            ],
+          },
+        ],
+      },
+      select: {
+        id: true,
+        lat: true,
+        lng: true,
+        searchRadius: true,
       },
     });
 
     // Filter by distance
     const matchedUserIds = new Set<string>();
-    for (const pref of preferenceMatches) {
-      // Skip business users
-      if (pref.user.role === "BUSINESS") continue;
-
-      if (pref.user.lat != null && pref.user.lng != null) {
-        const dist = haversineKm(pref.user.lat, pref.user.lng, bizLat, bizLng);
-        if (dist <= pref.user.searchRadius) {
-          matchedUserIds.add(pref.user.id);
+    for (const user of matchedUsers) {
+      if (user.lat != null && user.lng != null) {
+        const dist = haversineKm(user.lat, user.lng, bizLat, bizLng);
+        if (dist <= user.searchRadius) {
+          matchedUserIds.add(user.id);
         }
       } else {
         // Users without location set — include them (they see all)
-        matchedUserIds.add(pref.user.id);
+        matchedUserIds.add(user.id);
       }
     }
 
