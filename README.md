@@ -10,9 +10,9 @@ ReBookd is a modern, full-stack booking and reservation management platform buil
 -   **Advanced Booking System**: Real-time availability, slot management, and appointment tracking.
 -   **Secure Payments**: Integrated with **Stripe Connect** for business payouts and **Stripe Payments** for user transactions.
 -   **Authentication**: Secure login/signup via **NextAuth.js** (credentials & OAuth).
--   **Interactive Maps**: Geolocation and map-based business discovery.
--   **Notifications**: Real-time updates and email notifications via **SendGrid**.
--   **Reviews & Ratings**: Integrated review system for businesses.
+-   **Smart Notifications**: Real-time alerts for cancellations matching user **Location** and **Category Preferences** (or Watchlist).
+-   **Geolocation & Maps**: Integrated **OpenStreetMap** for business address geocoding and distance-based deal filtering.
+-   **Role-Based Dashboards**: tailored experiences for **Consumers** (Feed, Watchlist) and **Businesses** (Deal Management, Analytics).
 -   **Responsive Design**: Mobile-first UI built with **Tailwind CSS** and **Radix UI**.
 
 ## 🛠️ Tech Stack
