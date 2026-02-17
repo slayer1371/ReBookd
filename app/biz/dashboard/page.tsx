@@ -42,19 +42,31 @@ export default function BizDashboard() {
     setMounted(true);
   }, []);
 
+  const [stripeStatus, setStripeStatus] = useState<{ connected: boolean; detailsSubmitted: boolean; payoutsEnabled: boolean } | null>(null);
+
   useEffect(() => {
     if (status === "unauthenticated") router.push("/login");
     if (status !== "authenticated") return;
 
     async function load() {
       try {
-        const bizRes = await fetch("/api/business");
+        const [bizRes, stripeRes] = await Promise.all([
+          fetch("/api/business"),
+          fetch("/api/stripe/connect")
+        ]);
+
         if (bizRes.status === 404) {
           router.push("/biz/onboard");
           return;
         }
+        
         const bizData = await bizRes.json();
         setBusiness(bizData);
+
+        if (stripeRes.ok) {
+           const stripeData = await stripeRes.json();
+           setStripeStatus(stripeData);
+        }
 
         // Load cancellations for this business
         const cancelRes = await fetch(`/api/cancellations?businessId=${bizData.id}`);
@@ -68,6 +80,20 @@ export default function BizDashboard() {
     }
     load();
   }, [status, router]);
+
+  const handleConnectStripe = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch("/api/stripe/connect", { method: "POST" });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      }
+    } catch (e) {
+      console.error("Failed to connect stripe", e);
+      setLoading(false);
+    }
+  };
 
   if (loading || !mounted || !session) {
     return (
@@ -122,6 +148,62 @@ export default function BizDashboard() {
                 Post Cancellation
               </span>
             </Link>
+          </div>
+        </div>
+
+        {/* Payouts / Stripe Connect Banner */}
+        <div className="mb-8 overflow-hidden rounded-xl border border-white/[0.06] bg-[#111113]/60 backdrop-blur-xl">
+          <div className="flex flex-col items-center justify-between gap-4 p-6 sm:flex-row">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#635BFF]/10 text-[#635BFF]">
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                   <path d="M13.9 10.3c.5-.3.8-.5 1.1-.7.3-.2.5-.5.5-.8 0-.5-.4-.7-.9-.7-.3 0-.6.1-.8.2-.2.2-.4.4-.6.7l-2.4-1.5c.5-.8 1.1-1.4 1.8-1.7.7-.4 1.5-.5 2.5-.5 1.1 0 2.1.3 2.9.8.9.6 1.3 1.5 1.3 2.6 0 .9-.3 1.7-.8 2.3-.5.6-1.1 1.1-2 1.5l-1 .5c-.3.2-.5.3-.6.5-.1.1-.1.3-.1.5 0 .4.4.7 1 .7.4 0 .8-.1 1.1-.3.3-.2.6-.5.8-.9l2.4 1.5c-.5.9-1.2 1.6-2 2-.9.5-1.9.7-3 .7-1.3 0-2.3-.3-3.1-.9-.8-.6-1.3-1.5-1.3-2.6 0-1 .3-1.9.9-2.5.5-.6 1.4-1.2 2.3-1.6z"/>
+                 </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Payouts & Payments</h3>
+                <p className="text-sm text-zinc-400">
+                  {stripeStatus?.payoutsEnabled 
+                    ? "Your account is active and ready to receive payouts." 
+                    : "Connect your bank account to receive payments from customers."}
+                </p>
+              </div>
+            </div>
+            
+            <div>
+              {stripeStatus?.payoutsEnabled ? (
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 rounded-lg bg-emerald-500/10 px-4 py-2 text-sm font-medium text-emerald-400">
+                    <Icons.Verified width={16} height={16} />
+                    Payouts Active
+                  </div>
+                  <button
+                    onClick={async () => {
+                      try {
+                        const res = await fetch("/api/stripe/login", { method: "POST" });
+                        const data = await res.json();
+                        if (data.url) window.open(data.url, "_blank");
+                      } catch (e) {
+                        console.error(e);
+                      }
+                    }}
+                    className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:bg-white/[0.08] hover:text-white"
+                  >
+                    View Dashboard ↗
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={handleConnectStripe}
+                  className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-[#635BFF] px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#635BFF]/30 transition-all hover:bg-[#635BFF]/90 hover:shadow-xl hover:shadow-[#635BFF]/40 active:scale-[0.98]"
+                >
+                  <span className="relative">Connect Stripe</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="relative transition-transform group-hover:translate-x-1">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
