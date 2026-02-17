@@ -21,13 +21,10 @@ export default function BusinessCTA() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
-                href="/auth/signin?role=business"
+                href="/signup"
                 className="rounded-xl bg-emerald-500 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500 shadow-emerald-500/25"
               >
                 Join as a Partner
-              </Link>
-              <Link href="/business" className="text-sm font-semibold leading-6 text-white hover:text-emerald-300 transition-colors">
-                Learn more <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>

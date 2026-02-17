@@ -2,14 +2,13 @@ import Link from "next/link";
 
 const NAVIGATION = {
   product: [
-    { name: "Features", href: "#" },
-    { name: "Marketplace", href: "#" },
-    { name: "Business Portal", href: "#" },
+    { name: "Browse Deals", href: "/" },
+    { name: "Nearby", href: "/businesses" },
+    { name: "Watchlist", href: "/watchlist" },
   ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Careers", href: "#" },
+    { name: "About", href: "/welcome" },
+    { name: "Business Portal", href: "/biz/dashboard" },
   ],
   legal: [
     { name: "Privacy", href: "#" },
