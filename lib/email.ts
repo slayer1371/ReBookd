@@ -1,6 +1,8 @@
-import { Resend } from "resend";
+import sgMail from "@sendgrid/mail";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+if (process.env.SENDGRID_API_KEY) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+}
 
 const FROM_EMAIL = process.env.FROM_EMAIL || "noreply@rebookd.com";
 
@@ -29,9 +31,9 @@ export async function sendBookingConfirmation(data: BookingEmailData) {
   });
 
   try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
+    const msg = {
       to: data.to,
+      from: FROM_EMAIL,
       subject: `✅ Booking Confirmed — ${data.serviceName} at ${data.businessName}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 500px; margin: 0 auto; padding: 32px 24px; background: #111; color: #fff; border-radius: 16px;">
@@ -87,7 +89,9 @@ export async function sendBookingConfirmation(data: BookingEmailData) {
           </p>
         </div>
       `,
-    });
+    };
+
+    await sgMail.send(msg);
     return { success: true };
   } catch (error) {
     console.error("Failed to send booking email:", error);
@@ -117,9 +121,9 @@ export async function sendBusinessBookingNotification(data: BusinessNotification
   const netRevenue = (Number(data.paidAmount) - Number(data.platformFee)).toFixed(2);
 
   try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
+    const msg = {
       to: data.to,
+      from: FROM_EMAIL,
       subject: `🎉 New Booking — ${data.serviceName}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 500px; margin: 0 auto; padding: 32px 24px; background: #111; color: #fff; border-radius: 16px;">
@@ -133,7 +137,9 @@ export async function sendBusinessBookingNotification(data: BusinessNotification
           </div>
         </div>
       `,
-    });
+    };
+
+    await sgMail.send(msg);
     return { success: true };
   } catch (error) {
     console.error("Failed to send business notification:", error);
@@ -153,9 +159,9 @@ interface WatchlistNotificationData {
 
 export async function sendWatchlistNotification(data: WatchlistNotificationData) {
   try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
+    const msg = {
       to: data.to,
+      from: FROM_EMAIL,
       subject: `🔔 ${data.discountPercent}% off at ${data.businessName}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 500px; margin: 0 auto; padding: 32px 24px; background: #111; color: #fff; border-radius: 16px;">
@@ -184,7 +190,9 @@ export async function sendWatchlistNotification(data: WatchlistNotificationData)
           </div>
         </div>
       `,
-    });
+    };
+
+    await sgMail.send(msg);
     return { success: true };
   } catch (error) {
     console.error("Failed to send watchlist notification:", error);

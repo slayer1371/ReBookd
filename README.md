@@ -11,7 +11,7 @@ ReBookd is a modern, full-stack booking and reservation management platform buil
 -   **Secure Payments**: Integrated with **Stripe Connect** for business payouts and **Stripe Payments** for user transactions.
 -   **Authentication**: Secure login/signup via **NextAuth.js** (credentials & OAuth).
 -   **Interactive Maps**: Geolocation and map-based business discovery.
--   **Notifications**: Real-time updates and email notifications via **Resend**.
+-   **Notifications**: Real-time updates and email notifications via **SendGrid**.
 -   **Reviews & Ratings**: Integrated review system for businesses.
 -   **Responsive Design**: Mobile-first UI built with **Tailwind CSS** and **Radix UI**.
 
@@ -25,7 +25,7 @@ ReBookd is a modern, full-stack booking and reservation management platform buil
 -   **UI Components**: [Radix UI](https://www.radix-ui.com/), [Lucide React](https://lucide.dev/)
 -   **Authentication**: [NextAuth.js](https://next-auth.js.org/)
 -   **Payments**: [Stripe](https://stripe.com/)
--   **Email**: [Resend](https://resend.com/)
+-   **Email**: [SendGrid](https://sendgrid.com/)
 -   **Validation**: [Zod](https://zod.dev/)
 
 ## 📦 Getting Started
@@ -35,7 +35,7 @@ ReBookd is a modern, full-stack booking and reservation management platform buil
 -   Node.js (v18+)
 -   PostgreSQL database
 -   Stripe Account
--   Resend Account (for emails)
+-   SendGrid Account (for emails)
 
 ### Installation
 
@@ -76,8 +76,9 @@ ReBookd is a modern, full-stack booking and reservation management platform buil
     STRIPE_WEBHOOK_SECRET="whsec_..."
     NEXT_PUBLIC_STRIPE_CLIENT_ID="ca_..."
 
-    # Resend
-    RESEND_API_KEY="re_..."
+    # SendGrid
+    SENDGRID_API_KEY="SG..."
+    FROM_EMAIL="noreply@rebookd.com"
 
     # App
     NEXT_PUBLIC_APP_URL="http://localhost:3000"
