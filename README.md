@@ -1,36 +1,139 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ReBookd
 
-## Getting Started
+ReBookd is a modern, full-stack booking and reservation management platform built with Next.js 15. It connects users with local businesses, allowing for seamless appointment scheduling, payments, and service discovery.
 
-First, run the development server:
+![ReBookd Banner](https://placehold.co/1200x400?text=ReBookd+Platform)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Features
+
+-   **User & Business Portals**: Separate dashboards for regular users and business owners.
+-   **Advanced Booking System**: Real-time availability, slot management, and appointment tracking.
+-   **Secure Payments**: Integrated with **Stripe Connect** for business payouts and **Stripe Payments** for user transactions.
+-   **Authentication**: Secure login/signup via **NextAuth.js** (credentials & OAuth).
+-   **Interactive Maps**: Geolocation and map-based business discovery.
+-   **Notifications**: Real-time updates and email notifications via **Resend**.
+-   **Reviews & Ratings**: Integrated review system for businesses.
+-   **Responsive Design**: Mobile-first UI built with **Tailwind CSS** and **Radix UI**.
+
+## 🛠️ Tech Stack
+
+-   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Database**: [PostgreSQL](https://www.postgresql.org/)
+-   **ORM**: [Prisma](https://www.prisma.io/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **UI Components**: [Radix UI](https://www.radix-ui.com/), [Lucide React](https://lucide.dev/)
+-   **Authentication**: [NextAuth.js](https://next-auth.js.org/)
+-   **Payments**: [Stripe](https://stripe.com/)
+-   **Email**: [Resend](https://resend.com/)
+-   **Validation**: [Zod](https://zod.dev/)
+
+## 📦 Getting Started
+
+### Prerequisites
+
+-   Node.js (v18+)
+-   PostgreSQL database
+-   Stripe Account
+-   Resend Account (for emails)
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/slayer1371/ReBookd.git
+    cd ReBookd
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    # or
+    bun install
+    ```
+
+3.  **Set up Environment Variables:**
+
+    Create a `.env` file in the root directory and add the following variables:
+
+    ```env
+    # Database
+    DATABASE_URL="postgresql://user:password@localhost:5432/rebookd?schema=public"
+
+    # NextAuth
+    NEXTAUTH_URL="http://localhost:3000"
+    NEXTAUTH_SECRET="your-super-secret-key"
+
+    # Stripe
+    STRIPE_SECRET_KEY="sk_test_..."
+    STRIPE_publishable_KEY="pk_test_..."
+    STRIPE_WEBHOOK_SECRET="whsec_..."
+    NEXT_PUBLIC_STRIPE_CLIENT_ID="ca_..."
+
+    # Resend
+    RESEND_API_KEY="re_..."
+
+    # App
+    NEXT_PUBLIC_APP_URL="http://localhost:3000"
+    ```
+
+4.  **Database Setup:**
+
+    Push the Prisma schema to your database:
+
+    ```bash
+    npx prisma db push
+    ```
+
+    (Optional) Seed the database with initial data:
+
+    ```bash
+    npx prisma db seed
+    ```
+
+5.  **Run the Development Server:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📂 Project Structure
+
+```
+├── app/                  # Next.js App Router pages and layouts
+│   ├── api/              # API Routes (Next.js Edge/Node runtime)
+│   ├── (auth)/           # Authentication routes (login, signup)
+│   ├── (dashboard)/      # Protected dashboard routes
+│   └── layout.tsx        # Root layout
+├── components/           # Reusable React components
+│   ├── ui/               # UI primitives (buttons, inputs, etc.)
+│   └── ...
+├── lib/                  # Utility functions, hooks, and configurations
+│   ├── prisma.ts         # Prisma client instance
+│   └── utils.ts          # Helper functions
+├── prisma/               # Prisma schema and migrations
+├── public/               # Static assets
+└── styles/               # Global styles (globals.css)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1.  Fork the project
+2.  Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
-## Learn More
+## 📄 License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
