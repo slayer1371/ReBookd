@@ -72,7 +72,7 @@ model User {
   password      String?
 
   // Extended fields
-  role         UserRole @default(CONSUMER)
+  role         UserRole? // No default, so we can detect new users
   phone        String?
   avatarUrl    String?
   lat          Float?

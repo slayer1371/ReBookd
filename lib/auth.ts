@@ -80,7 +80,7 @@ export const authOptions: NextAuthOptions = {
           where: { id: user.id },
           select: { role: true },
         });
-        token.role = dbUser?.role || "CONSUMER";
+        token.role = dbUser?.role || undefined;
       }
       // Refresh role on update trigger
       if (trigger === "update" && token.id) {

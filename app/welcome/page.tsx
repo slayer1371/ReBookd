@@ -67,7 +67,20 @@ export default function WelcomePage() {
         <div className="space-y-3">
           {/* Consumer option */}
           <button
-            onClick={() => router.push("/")}
+            onClick={async () => {
+               try {
+                 const res = await fetch("/api/user/role", {
+                   method: "POST",
+                   body: JSON.stringify({ role: "CONSUMER" }),
+                 });
+                 if (res.ok) {
+                   // Force a session refresh or just redirect
+                   window.location.href = "/";
+                 }
+               } catch (e) {
+                 console.error(e);
+               }
+            }}
             className="group relative w-full text-left"
           >
             <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 transition-opacity group-hover:opacity-100" />
@@ -89,7 +102,19 @@ export default function WelcomePage() {
 
           {/* Business option */}
           <button
-            onClick={() => router.push("/biz/onboard")}
+            onClick={async () => {
+               try {
+                 const res = await fetch("/api/user/role", {
+                   method: "POST",
+                   body: JSON.stringify({ role: "BUSINESS" }),
+                 });
+                 if (res.ok) {
+                    window.location.href = "/biz/onboard";
+                 }
+               } catch (e) {
+                 console.error(e);
+               }
+            }}
             className="group relative w-full text-left"
           >
             <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-emerald-500/20 to-teal-500/20 opacity-0 transition-opacity group-hover:opacity-100" />
