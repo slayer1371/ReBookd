@@ -42,6 +42,8 @@ export default function NewCancellationPage() {
   );
   const [minDiscount, setMinDiscount] = useState("10");
   const [maxDiscount, setMaxDiscount] = useState("50");
+  const [description, setDescription] = useState("");
+  const [generating, setGenerating] = useState(false);
 
   useEffect(() => {
     if (status === "unauthenticated") router.push("/login");
@@ -64,6 +66,27 @@ export default function NewCancellationPage() {
 
   const selectedService = business?.services.find((s) => s.id === serviceId);
 
+  const handleGenerateAI = async () => {
+    if (!business || !selectedService) return;
+    setGenerating(true);
+    try {
+      const prompt = `Write a short, catchy 1-sentence description for a ${selectedService.name} cancellation slot at ${business.name} starting at ${new Date(startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}. The deal offers up to ${maxDiscount}% off. Make it urgent but professional.`;
+      
+      const res = await fetch("/api/ai/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt }),
+      });
+      
+      const data = await res.json();
+      if (data.text) setDescription(data.text);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setGenerating(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!business || !selectedService) return;
@@ -83,6 +106,7 @@ export default function NewCancellationPage() {
           originalEndTime: end.toISOString(),
           minDiscount: parseInt(minDiscount),
           maxDiscount: parseInt(maxDiscount),
+          description, // Pass description to backend
         }),
       });
 
@@ -197,6 +221,32 @@ export default function NewCancellationPage() {
                       <input type="number" value={maxDiscount} onChange={(e) => setMaxDiscount(e.target.value)} min="0" max="100"
                         className="h-11 w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 text-sm text-white outline-none transition-all focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/25" />
                     </div>
+                  </div>
+
+                  {/* Description with AI */}
+                  <div>
+                     <div className="mb-1.5 flex items-center justify-between">
+                        <label className="block text-xs font-medium uppercase tracking-wider text-zinc-400">Description (Optional)</label>
+                        <button
+                          type="button"
+                          onClick={handleGenerateAI}
+                          disabled={generating}
+                          className="flex items-center gap-1 text-xs font-medium text-purple-400 hover:text-purple-300 transition-colors disabled:opacity-50"
+                        >
+                          {generating ? (
+                             <svg className="h-3 w-3 animate-spin" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                          ) : (
+                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                          )}
+                          {generating ? "Writing..." : "Auto-Write with AI"}
+                        </button>
+                     </div>
+                     <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="e.g. Last minute cancellation due to illness. Grab it now!"
+                        className="h-24 w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-white outline-none transition-all focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/25 custom-scrollbar resize-none"
+                     />
                   </div>
 
                   {/* Live preview */}
