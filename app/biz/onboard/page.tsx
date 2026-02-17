@@ -35,7 +35,7 @@ function slugify(text: string) {
 
 export default function OnboardPage() {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { data: session, status, update } = useSession();
   const [step, setStep] = useState(1);
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -124,6 +124,9 @@ export default function OnboardPage() {
         return;
       }
 
+      // Force session update to reflect new role
+      await update();
+      router.refresh(); // Ensure server components re-render
       router.push("/biz/dashboard");
     } catch {
       setError("Network error. Please try again.");
