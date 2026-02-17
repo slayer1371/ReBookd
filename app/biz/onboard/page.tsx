@@ -52,6 +52,8 @@ export default function OnboardPage() {
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
   const [website, setWebsite] = useState("");
+  const [lat, setLat] = useState<number | null>(null);
+  const [lng, setLng] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -108,8 +110,8 @@ export default function OnboardPage() {
           city,
           state,
           zip,
-          lat: 40.7128, // TODO: geocode from address
-          lng: -74.006,
+          lat: lat || 40.7128, // Fallback to NYC only if geocoding failed completely
+          lng: lng || -74.006,
           phone: phone || undefined,
           website: website || undefined,
         }),
@@ -456,8 +458,29 @@ export default function OnboardPage() {
 
               {step < STEPS.length ? (
                 <button
-                  onClick={() => canProceed() && setStep(step + 1)}
-                  disabled={!canProceed()}
+                  onClick={async () => {
+                    if (step === 3 && canProceed()) {
+                      setLoading(true);
+                      try {
+                        const query = `${address}, ${city}, ${state} ${zip}`;
+                        const res = await fetch(`/api/geo/geocode?q=${encodeURIComponent(query)}`);
+                        const data = await res.json();
+                        if (data.lat && data.lng) {
+                          setLat(data.lat);
+                          setLng(data.lng);
+                        }
+                      } catch (e) {
+                        console.error("Geocoding failed", e);
+                        // We continue anyway, will fallback or user can edit later
+                      } finally {
+                        setLoading(false);
+                        setStep(step + 1);
+                      }
+                    } else if (canProceed()) {
+                      setStep(step + 1);
+                    }
+                  }}
+                  disabled={!canProceed() || loading}
                   className="group relative flex items-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition-all hover:shadow-xl hover:shadow-emerald-500/30 active:scale-[0.98] disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 transition-opacity group-hover:opacity-100" />
