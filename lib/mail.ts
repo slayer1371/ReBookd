@@ -34,7 +34,11 @@ export async function sendVerificationEmail(email: string) {
 
   try {
     await sgMail.send(msg);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Failed to send verification email:", error);
+    if (error.response) {
+      console.error("SendGrid Response Body:", error.response.body);
+    }
+    console.error("Attempted to send FROM:", msg.from);
   }
 }
