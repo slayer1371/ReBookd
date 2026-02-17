@@ -3,6 +3,11 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import Hero from "@/components/landing/Hero";
+import Features from "@/components/landing/Features";
+import HowItWorks from "@/components/landing/HowItWorks";
+import BusinessCTA from "@/components/landing/BusinessCTA";
+import Footer from "@/components/Footer";
 
 interface Cancellation {
   id: string;
@@ -84,7 +89,7 @@ function urgencyColor(dateStr: string) {
   return "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
 }
 
-export default function FeedPage() {
+export default function LandingPage() {
   const { status } = useSession();
   const [items, setItems] = useState<Cancellation[]>([]);
   const [loading, setLoading] = useState(true);
@@ -238,6 +243,16 @@ export default function FeedPage() {
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0b]">
+        {/* Marketing Sections (Hero, Features, etc.) */}
+        <Hero />
+        
+        {status !== "authenticated" && (
+            <>
+                <Features />
+                <HowItWorks />
+            </>
+        )}
+
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-indigo-600/10 blur-[140px]" />
@@ -249,47 +264,16 @@ export default function FeedPage() {
         backgroundSize: "64px 64px",
       }} />
 
-      <div className="relative z-10">
-        <div className="mx-auto max-w-5xl px-4 py-6 sm:px-8">
-          {/* Hero */}
-          <div className={`mb-8 transition-all duration-700 ${mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
-            <h2 className="text-2xl font-bold text-white sm:text-3xl">
-              Last-minute deals
-              <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-red-500/10 border border-red-500/20 px-2.5 py-0.5 text-xs font-medium text-red-400">
-                <span className="h-1.5 w-1.5 rounded-full bg-red-400 animate-pulse" />
-                LIVE
-              </span>
-            </h2>
-            <p className="mt-1 text-sm text-zinc-500">
-              Discounted cancellations from businesses near you. Prices drop as appointment time approaches.
-            </p>
-
-            {/* Active filters indicator */}
-            <div className="mt-3 flex flex-wrap items-center gap-2">
-              {locationStatus === "granted" && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 text-[11px] font-medium text-emerald-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Within {userPrefs?.searchRadius || 50} km
-                </span>
-              )}
-              {locationStatus === "denied" && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 border border-amber-500/20 px-2.5 py-1 text-[11px] font-medium text-amber-400">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  Location off — showing all
-                </span>
-              )}
-              {hasActivePrefs && !selectedCategory && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 text-[11px] font-medium text-indigo-400">
-                  Filtered by your preferences
-                  <Link href="/preferences" className="ml-1 underline underline-offset-2 decoration-indigo-500/50 hover:text-indigo-300">edit</Link>
-                </span>
-              )}
+      <div className="relative z-10" id="live-deals">
+        <div className="mx-auto max-w-5xl px-4 py-12 sm:px-8">
+            <div className="mb-12 text-center">
+                <h2 className="text-3xl font-bold text-white mb-4">Live Deals</h2>
+                <p className="text-zinc-400">Real-time cancellations happening right now.</p>
             </div>
-          </div>
 
           {/* Category filters */}
           <div className={`mb-6 transition-all duration-700 delay-100 ${mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide justify-center">
               <button
                 onClick={() => setSelectedCategory(null)}
                 className={`shrink-0 rounded-full px-4 py-1.5 text-xs font-medium transition-all ${
@@ -316,6 +300,21 @@ export default function FeedPage() {
                 </button>
               ))}
             </div>
+            {/* Active filter badges */}
+            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
+              {locationStatus === "granted" && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 text-[11px] font-medium text-emerald-400">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  Within {userPrefs?.searchRadius || 50} km
+                </span>
+              )}
+              {hasActivePrefs && !selectedCategory && (
+                <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 text-[11px] font-medium text-indigo-400">
+                  Filtered by your preferences
+                  <Link href="/preferences" className="ml-1 underline underline-offset-2 decoration-indigo-500/50 hover:text-indigo-300">edit</Link>
+                </span>
+              )}
+            </div>
           </div>
 
           {/* Feed */}
@@ -335,11 +334,6 @@ export default function FeedPage() {
                   : "Check back soon — deals appear when businesses have last-minute cancellations."
                 }
               </p>
-              {locationStatus === "granted" && (
-                <Link href="/preferences" className="mt-4 inline-block rounded-xl border border-white/[0.08] bg-white/[0.03] px-5 py-2 text-sm font-medium text-zinc-300 hover:bg-white/[0.06]">
-                  Adjust preferences
-                </Link>
-              )}
             </div>
           ) : (
             <>
@@ -428,6 +422,13 @@ export default function FeedPage() {
           )}
         </div>
       </div>
+      
+      {status !== "authenticated" && (
+         <>
+            <BusinessCTA />
+            <Footer />
+         </>
+      )}
     </div>
   );
 }

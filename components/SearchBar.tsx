@@ -23,7 +23,12 @@ interface SearchResult {
   }[];
 }
 
-export default function SearchBar() {
+interface SearchBarProps {
+  placeholder?: string;
+  className?: string;
+}
+
+export default function SearchBar({ placeholder, className }: SearchBarProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult | null>(null);
   const [loading, setLoading] = useState(false);
@@ -70,13 +75,13 @@ export default function SearchBar() {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-sm">
+    <div ref={containerRef} className={`relative w-full ${className || "max-w-sm"}`}>
       <div className="relative">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search businesses, services..."
+          placeholder={placeholder || "Search businesses, services..."}
           className="w-full rounded-xl border border-white/10 bg-white/5 py-2 pl-10 pr-4 text-sm text-white placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           onFocus={() => {
             if (query.length >= 2 && results) setOpen(true);
@@ -93,7 +98,7 @@ export default function SearchBar() {
       </div>
 
       {open && results && (
-        <div className="absolute top-full mt-2 w-full overflow-hidden rounded-xl border border-white/10 bg-[#18181b] shadow-2xl z-50">
+        <div className="relative mt-2 w-full overflow-hidden rounded-xl border border-white/10 bg-[#18181b] shadow-2xl z-50">
           {results.businesses.length === 0 && results.services.length === 0 ? (
             <div className="p-4 text-center text-sm text-zinc-500">No results found</div>
           ) : (
