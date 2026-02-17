@@ -27,6 +27,7 @@ ReBookd is a modern, full-stack booking and reservation management platform buil
 -   **Payments**: [Stripe](https://stripe.com/)
 -   **Email**: [SendGrid](https://sendgrid.com/)
 -   **Validation**: [Zod](https://zod.dev/)
+-   **Infrastructure**: [AWS Lambda](https://aws.amazon.com/lambda/) (Cron Jobs) via [Amazon EventBridge](https://aws.amazon.com/eventbridge/)
 
 ## 📦 Getting Started
 
