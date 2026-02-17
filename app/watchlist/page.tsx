@@ -68,7 +68,7 @@ export default function WatchlistPage() {
     <div className="relative min-h-screen bg-[#0a0a0b]">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-pink-600/10 blur-[140px]" />
-        <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-purple-600/10 blur-[140px]" />
+        <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-cyan-600/10 blur-[140px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-2xl px-4 py-8 sm:px-8">
@@ -89,7 +89,7 @@ export default function WatchlistPage() {
 
         {loading ? (
           <div className="flex justify-center py-20">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-500 border-t-transparent" />
           </div>
         ) : items.length === 0 ? (
           <div className="py-20 text-center">
@@ -98,7 +98,7 @@ export default function WatchlistPage() {
             <p className="mt-1 text-sm text-zinc-500">
               Tap the heart on a deal card to watch a business and get notified about new deals.
             </p>
-            <Link href="/" className="mt-4 inline-flex items-center gap-1 text-sm text-indigo-400 hover:text-indigo-300">
+            <Link href="/" className="mt-4 inline-flex items-center gap-1 text-sm text-blue-400 hover:text-blue-300">
               Browse deals →
             </Link>
           </div>

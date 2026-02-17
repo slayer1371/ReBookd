@@ -23,7 +23,7 @@ export default function WelcomePage() {
   if (status === "loading" || !mounted) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0a0a0b]">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-500 border-t-transparent" />
       </div>
     );
   }
@@ -34,9 +34,9 @@ export default function WelcomePage() {
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0b]">
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-purple-600/15 blur-[120px] animate-pulse" />
+        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-cyan-600/15 blur-[120px] animate-pulse" />
         <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-blue-600/15 blur-[120px] animate-pulse [animation-delay:1s]" />
-        <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-[100px] animate-pulse [animation-delay:2s]" />
+        <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/10 blur-[100px] animate-pulse [animation-delay:2s]" />
       </div>
 
       <div className="pointer-events-none absolute inset-0 opacity-[0.025]" style={{
@@ -50,7 +50,7 @@ export default function WelcomePage() {
       >
         {/* Header */}
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-xl shadow-indigo-500/25">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-xl shadow-blue-500/25">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
@@ -70,20 +70,20 @@ export default function WelcomePage() {
             onClick={() => router.push("/")}
             className="group relative w-full text-left"
           >
-            <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 transition-opacity group-hover:opacity-100" />
-            <div className="relative flex items-start gap-4 rounded-2xl border border-white/[0.06] bg-[#111113]/80 backdrop-blur-xl p-5 transition-all group-hover:border-indigo-500/30 group-hover:bg-white/[0.04]">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-indigo-500/10 text-2xl">
+            <div className="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-blue-500/20 to-cyan-500/20 opacity-0 transition-opacity group-hover:opacity-100" />
+            <div className="relative flex items-start gap-4 rounded-2xl border border-white/[0.06] bg-[#111113]/80 backdrop-blur-xl p-5 transition-all group-hover:border-blue-500/30 group-hover:bg-white/[0.04]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-2xl">
                 🔍
               </div>
               <div>
-                <h3 className="text-base font-semibold text-white group-hover:text-indigo-300 transition-colors">
+                <h3 className="text-base font-semibold text-white group-hover:text-blue-300 transition-colors">
                   I&apos;m looking for deals
                 </h3>
                 <p className="mt-1 text-sm text-zinc-500">
                   Browse discounted last-minute cancellations from gyms, salons, clinics, and more near you.
                 </p>
               </div>
-              <svg className="mt-1 shrink-0 text-zinc-600 group-hover:text-indigo-400 transition-colors" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              <svg className="mt-1 shrink-0 text-zinc-600 group-hover:text-blue-400 transition-colors" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </div>
           </button>
 

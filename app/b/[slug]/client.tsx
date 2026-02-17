@@ -191,13 +191,13 @@ export default function BusinessProfileClient({
               onClick={() => setActiveTab(tab)}
               className={`pb-4 transition-colors ${
                 activeTab === tab
-                  ? "border-b-2 border-indigo-500 text-white"
+                  ? "border-b-2 border-blue-500 text-white"
                   : "text-zinc-500 hover:text-zinc-300"
               }`}
             >
               {tab}
               {tab === "Deals" && business.cancellations.length > 0 && (
-                <span className="ml-2 rounded-full bg-indigo-500/20 px-2 py-0.5 text-[10px] text-indigo-400">
+                <span className="ml-2 rounded-full bg-blue-500/20 px-2 py-0.5 text-[10px] text-blue-400">
                   {business.cancellations.length}
                 </span>
               )}
@@ -219,16 +219,16 @@ export default function BusinessProfileClient({
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {business.cancellations.map((c) => (
                     <Link href={`/deals/${c.id}`} key={c.id}>
-                      <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 p-5 transition-all hover:border-indigo-500/50 hover:bg-zinc-800 hover:shadow-2xl hover:shadow-indigo-500/10">
+                      <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 p-5 transition-all hover:border-blue-500/50 hover:bg-zinc-800 hover:shadow-2xl hover:shadow-blue-500/10">
                         <div className="mb-4 flex items-center justify-between">
-                          <span className="rounded-full bg-indigo-500/20 px-2.5 py-1 text-xs font-medium text-indigo-400">
+                          <span className="rounded-full bg-blue-500/20 px-2.5 py-1 text-xs font-medium text-blue-400">
                             {business.category}
                           </span>
                           <span className="text-xs font-medium text-red-400 animate-pulse">
                             -{c.discountPercent}%
                           </span>
                         </div>
-                        <h3 className="font-semibold text-white group-hover:text-indigo-400 transition-colors">
+                        <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">
                           {c.service.name}
                         </h3>
                         <div className="mt-4 flex items-end justify-between">

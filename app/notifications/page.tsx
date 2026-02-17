@@ -70,7 +70,7 @@ export default function NotificationsPage() {
 
   function typeIcon(type: string) {
     if (type === "NEW_CANCELLATION") return (
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-500/15 text-indigo-400">
+      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/15 text-blue-400">
         <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
           <path strokeLinecap="round" strokeLinejoin="round" d="M6 6h.008v.008H6V6z" />
@@ -96,8 +96,8 @@ export default function NotificationsPage() {
   return (
     <div className="relative min-h-screen bg-[#0a0a0b]">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-indigo-600/10 blur-[140px]" />
-        <div className="absolute -bottom-40 -right-40 h-[600px] w-[600px] rounded-full bg-purple-600/10 blur-[140px]" />
+        <div className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[140px]" />
+        <div className="absolute -bottom-40 -right-40 h-[600px] w-[600px] rounded-full bg-cyan-600/10 blur-[140px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-2xl px-4 py-8 sm:px-8">
@@ -114,7 +114,7 @@ export default function NotificationsPage() {
           {unreadCount > 0 && (
             <button
               onClick={markAllRead}
-              className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-indigo-400 transition-colors hover:bg-white/[0.05]"
+              className="rounded-lg border border-white/10 px-3 py-1.5 text-sm text-blue-400 transition-colors hover:bg-white/[0.05]"
             >
               Mark all read
             </button>
@@ -124,7 +124,7 @@ export default function NotificationsPage() {
         {/* List */}
         {loading ? (
           <div className="flex items-center justify-center py-16">
-            <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-indigo-400" />
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-blue-400" />
           </div>
         ) : notifications.length === 0 ? (
           <div className="py-16 text-center">
@@ -145,7 +145,7 @@ export default function NotificationsPage() {
                 onClick={() => { if (!n.read) markRead(n.id); }}
                 className={`group flex items-start gap-4 rounded-xl border p-4 transition-all hover:border-white/[0.1] hover:bg-white/[0.03] ${
                   !n.read
-                    ? "border-indigo-500/20 bg-indigo-500/[0.05]"
+                    ? "border-blue-500/20 bg-blue-500/[0.05]"
                     : "border-white/[0.06] bg-white/[0.02]"
                 }`}
               >
@@ -158,7 +158,7 @@ export default function NotificationsPage() {
                   <p className="mt-2 text-xs text-zinc-600">{timeAgo(n.sentAt)}</p>
                 </div>
                 {!n.read && (
-                  <div className="mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-indigo-400" />
+                  <div className="mt-1 h-2.5 w-2.5 flex-shrink-0 rounded-full bg-blue-400" />
                 )}
               </Link>
             ))}

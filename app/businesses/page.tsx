@@ -150,8 +150,8 @@ export default function BusinessesPage() {
     <div className="relative min-h-screen bg-[#0a0a0b]">
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-indigo-600/10 blur-[140px]" />
-        <div className="absolute -bottom-40 -right-40 h-[600px] w-[600px] rounded-full bg-purple-600/10 blur-[140px]" />
+        <div className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[140px]" />
+        <div className="absolute -bottom-40 -right-40 h-[600px] w-[600px] rounded-full bg-cyan-600/10 blur-[140px]" />
       </div>
       <div className="pointer-events-none fixed inset-0 opacity-[0.02]" style={{
         backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
@@ -177,7 +177,7 @@ export default function BusinessesPage() {
             onClick={() => setSelectedCategory(null)}
             className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
               !selectedCategory
-                ? "bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/30"
+                ? "bg-blue-500/20 text-blue-300 ring-1 ring-blue-500/30"
                 : "bg-white/[0.04] text-zinc-400 hover:bg-white/[0.08] hover:text-zinc-300"
             }`}
           >
@@ -189,7 +189,7 @@ export default function BusinessesPage() {
               onClick={() => setSelectedCategory(cat === selectedCategory ? null : cat)}
               className={`rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                 selectedCategory === cat
-                  ? "bg-indigo-500/20 text-indigo-300 ring-1 ring-indigo-500/30"
+                  ? "bg-blue-500/20 text-blue-300 ring-1 ring-blue-500/30"
                   : "bg-white/[0.04] text-zinc-400 hover:bg-white/[0.08] hover:text-zinc-300"
               }`}
             >
@@ -201,7 +201,7 @@ export default function BusinessesPage() {
         {/* Grid */}
         {loading ? (
           <div className="flex items-center justify-center py-20">
-            <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-indigo-400" />
+            <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/20 border-t-blue-400" />
           </div>
         ) : businesses.length === 0 ? (
           <div className="py-20 text-center">

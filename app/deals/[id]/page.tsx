@@ -215,9 +215,9 @@ function PaymentForm({
         <button
           type="submit"
           disabled={processing || !stripe}
-          className="group relative flex-[2] overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 py-3 text-sm font-semibold text-white shadow-xl shadow-indigo-500/25 transition-all hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
+          className="group relative flex-[2] overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 py-3 text-sm font-semibold text-white shadow-xl shadow-blue-500/25 transition-all hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" />
           <span className="relative flex items-center justify-center gap-2">
             {processing ? (
               <>
@@ -305,7 +305,7 @@ export default function DealPage({ params }: { params: Promise<{ id: string }> }
   if (loading || !mounted) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#0a0a0b]">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-500 border-t-transparent" />
       </div>
     );
   }
@@ -319,8 +319,8 @@ export default function DealPage({ params }: { params: Promise<{ id: string }> }
     <div className="relative min-h-screen bg-[#0a0a0b]">
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-indigo-600/10 blur-[140px]" />
-        <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-purple-600/10 blur-[140px]" />
+        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-blue-600/10 blur-[140px]" />
+        <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-cyan-600/10 blur-[140px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-2xl px-4 py-8 sm:px-8">
@@ -348,7 +348,7 @@ export default function DealPage({ params }: { params: Promise<{ id: string }> }
               <Link href="/bookings" className="rounded-xl border border-white/[0.08] bg-white/[0.03] px-5 py-2 text-sm font-medium text-zinc-300 hover:bg-white/[0.06]">
                 View my bookings
               </Link>
-              <Link href="/" className="rounded-xl bg-indigo-600 px-5 py-2 text-sm font-medium text-white hover:bg-indigo-500">
+              <Link href="/" className="rounded-xl bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-500">
                 Browse more deals
               </Link>
             </div>
@@ -370,7 +370,7 @@ export default function DealPage({ params }: { params: Promise<{ id: string }> }
                     {CATEGORY_META[deal.business.category]?.icon || "📋"}
                   </div>
                   <div>
-                    <Link href={`/b/${deal.business.slug}`} className="hover:underline hover:text-indigo-400">
+                    <Link href={`/b/${deal.business.slug}`} className="hover:underline hover:text-blue-400">
                       <h2 className="text-lg font-semibold text-white">{deal.business.name}</h2>
                     </Link>
                     <p className="text-sm text-zinc-500">
@@ -465,9 +465,9 @@ export default function DealPage({ params }: { params: Promise<{ id: string }> }
                   <button
                     onClick={handleBookClick}
                     disabled={deal.status !== "AVAILABLE"}
-                    className="group relative h-12 w-full overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-sm font-semibold text-white shadow-xl shadow-indigo-500/25 transition-all hover:shadow-2xl hover:shadow-indigo-500/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="group relative h-12 w-full overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-sm font-semibold text-white shadow-xl shadow-blue-500/25 transition-all hover:shadow-2xl hover:shadow-blue-500/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" />
                     <span className="relative flex items-center justify-center gap-2">
                       {deal.status !== "AVAILABLE" ? (
                         "No longer available"
@@ -480,7 +480,7 @@ export default function DealPage({ params }: { params: Promise<{ id: string }> }
 
                 {deal.business.phone && (
                   <p className="mt-3 text-center text-xs text-zinc-600">
-                    Questions? Call <a href={`tel:${deal.business.phone}`} className="text-indigo-400 hover:text-indigo-300">{deal.business.phone}</a>
+                    Questions? Call <a href={`tel:${deal.business.phone}`} className="text-blue-400 hover:text-blue-300">{deal.business.phone}</a>
                   </p>
                 )}
               </div>

@@ -255,8 +255,8 @@ export default function LandingPage() {
 
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-indigo-600/10 blur-[140px]" />
-        <div className="absolute -bottom-40 -right-40 h-[600px] w-[600px] rounded-full bg-purple-600/10 blur-[140px]" />
+        <div className="absolute -left-40 -top-40 h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[140px]" />
+        <div className="absolute -bottom-40 -right-40 h-[600px] w-[600px] rounded-full bg-cyan-600/10 blur-[140px]" />
       </div>
       {/* Subtle grid overlay */}
       <div className="pointer-events-none fixed inset-0 opacity-[0.02]" style={{
@@ -278,7 +278,7 @@ export default function LandingPage() {
                 onClick={() => setSelectedCategory(null)}
                 className={`shrink-0 rounded-full px-4 py-1.5 text-xs font-medium transition-all ${
                   !selectedCategory
-                    ? "bg-indigo-500/15 text-indigo-400 border border-indigo-500/30"
+                    ? "bg-blue-500/15 text-blue-400 border border-blue-500/30"
                     : "bg-white/[0.03] text-zinc-500 border border-white/[0.06] hover:bg-white/[0.06] hover:text-zinc-300"
                 }`}
               >
@@ -292,7 +292,7 @@ export default function LandingPage() {
                   }
                   className={`shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-all ${
                     selectedCategory === cat
-                      ? "bg-indigo-500/15 text-indigo-400 border border-indigo-500/30"
+                      ? "bg-blue-500/15 text-blue-400 border border-blue-500/30"
                       : "bg-white/[0.03] text-zinc-500 border border-white/[0.06] hover:bg-white/[0.06] hover:text-zinc-300"
                   }`}
                 >
@@ -309,9 +309,9 @@ export default function LandingPage() {
                 </span>
               )}
               {hasActivePrefs && !selectedCategory && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-1 text-[11px] font-medium text-indigo-400">
+                <span className="inline-flex items-center gap-1 rounded-full bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 text-[11px] font-medium text-blue-400">
                   Filtered by your preferences
-                  <Link href="/preferences" className="ml-1 underline underline-offset-2 decoration-indigo-500/50 hover:text-indigo-300">edit</Link>
+                  <Link href="/preferences" className="ml-1 underline underline-offset-2 decoration-blue-500/50 hover:text-blue-300">edit</Link>
                 </span>
               )}
             </div>
@@ -320,7 +320,7 @@ export default function LandingPage() {
           {/* Feed */}
           {loading ? (
             <div className="flex justify-center py-20">
-              <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+              <div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-500 border-t-transparent" />
             </div>
           ) : items.length === 0 ? (
             <div className={`text-center py-20 transition-all duration-700 delay-200 ${mounted ? "opacity-100" : "opacity-0"}`}>
@@ -375,7 +375,7 @@ export default function LandingPage() {
                       </div>
 
                       {/* Service name */}
-                      <h3 className="mb-2 text-base font-semibold text-white group-hover:text-indigo-300 transition-colors">
+                      <h3 className="mb-2 text-base font-semibold text-white group-hover:text-blue-300 transition-colors">
                         {item.service.name}
                       </h3>
 
@@ -402,7 +402,7 @@ export default function LandingPage() {
                     </div>
 
                     {/* Bottom gradient line */}
-                    <div className="h-[2px] bg-gradient-to-r from-indigo-500/0 via-indigo-500/50 to-indigo-500/0 opacity-0 transition-opacity group-hover:opacity-100" />
+                    <div className="h-[2px] bg-gradient-to-r from-blue-500/0 via-blue-500/50 to-blue-500/0 opacity-0 transition-opacity group-hover:opacity-100" />
                   </Link>
                 ))}
               </div>

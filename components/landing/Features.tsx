@@ -13,9 +13,9 @@ const FEATURES = [
   {
     title: "Support Local",
     description: "Help local businesses fill empty slots and reduce waste. It's a win-win for everyone.",
-    icon: <Icons.Nearby className="h-6 w-6 text-indigo-400" />,
-    gradient: "from-indigo-500/20 to-purple-500/20",
-    border: "border-indigo-500/20",
+    icon: <Icons.Nearby className="h-6 w-6 text-blue-400" />,
+    gradient: "from-blue-500/20 to-cyan-500/20",
+    border: "border-blue-500/20",
   },
   {
     title: "Seamless Booking",

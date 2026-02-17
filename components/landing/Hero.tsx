@@ -16,8 +16,8 @@ export default function Hero() {
     <div className="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
       {/* Background elements */}
       <div className="pointer-events-none absolute inset-0 flex justify-center">
-        <div className="h-[500px] w-[500px] rounded-full bg-indigo-500/20 blur-[120px]" />
-        <div className="h-[500px] w-[500px] rounded-full bg-purple-500/20 blur-[120px] -translate-x-32 translate-y-20" />
+        <div className="h-[500px] w-[500px] rounded-full bg-blue-500/20 blur-[120px]" />
+        <div className="h-[500px] w-[500px] rounded-full bg-cyan-500/20 blur-[120px] -translate-x-32 translate-y-20" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -44,7 +44,7 @@ export default function Hero() {
             }`}
           >
             Last-minute bookings, {" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
               unbeatable prices.
             </span>
           </h1>

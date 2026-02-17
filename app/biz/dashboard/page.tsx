@@ -81,8 +81,8 @@ export default function BizDashboard() {
 
   const stats = [
     { label: "Active Slots", value: cancellations.filter(c => c.status === "AVAILABLE").length, icon: "🔥", color: "from-orange-500/20 to-amber-500/20" },
-    { label: "Total Bookings", value: business._count.bookings, icon: "📅", color: "from-blue-500/20 to-indigo-500/20" },
-    { label: "Services", value: business.services.length, icon: "🛠️", color: "from-purple-500/20 to-pink-500/20" },
+    { label: "Total Bookings", value: business._count.bookings, icon: "📅", color: "from-blue-500/20 to-blue-500/20" },
+    { label: "Services", value: business.services.length, icon: "🛠️", color: "from-cyan-500/20 to-pink-500/20" },
     { label: "Watchers", value: business._count.watchers, icon: "👁️", color: "from-emerald-500/20 to-teal-500/20" },
   ];
 

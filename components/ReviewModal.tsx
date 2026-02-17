@@ -104,7 +104,7 @@ export default function ReviewModal({
                 {image ? (
                   <img src={image} alt={businessName} className="h-10 w-10 rounded-lg object-cover" />
                 ) : (
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500/20 text-lg">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/20 text-lg">
                     🏢
                   </div>
                 )}
@@ -152,7 +152,7 @@ export default function ReviewModal({
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder="How was the service? Would you recommend it?"
-                  className="w-full rounded-xl border border-white/10 bg-black/40 p-3 text-sm text-white placeholder:text-zinc-600 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  className="w-full rounded-xl border border-white/10 bg-black/40 p-3 text-sm text-white placeholder:text-zinc-600 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
               </div>
 
@@ -169,7 +169,7 @@ export default function ReviewModal({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="flex-[2] rounded-xl bg-indigo-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-500 disabled:opacity-50"
+                  className="flex-[2] rounded-xl bg-blue-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-500 disabled:opacity-50"
                 >
                   {submitting ? "Submitting..." : "Submit Review"}
                 </button>

@@ -29,7 +29,7 @@ function LoginForm() {
   if (isRedirecting) {
     return (
       <div className="flex items-center justify-center p-20">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-500 border-t-transparent" />
       </div>
     );
   }
@@ -88,7 +88,7 @@ function LoginForm() {
       <div className="relative rounded-2xl bg-[#111113]/80 backdrop-blur-2xl px-8 py-10 shadow-2xl shadow-black/40">
         {/* Header */}
         <div className={`mb-8 transition-all duration-700 delay-200 ${mounted ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}>
-          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg shadow-indigo-500/25">
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-600 shadow-lg shadow-blue-500/25">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
               <polyline points="10 17 15 12 10 7" />
@@ -159,7 +159,7 @@ function LoginForm() {
               onChange={(e) => setEmail(e.target.value)}
               required
               placeholder="you@example.com"
-              className="h-11 w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition-all focus:border-indigo-500/50 focus:bg-white/[0.05] focus:ring-1 focus:ring-indigo-500/25"
+              className="h-11 w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 text-sm text-white placeholder:text-zinc-600 outline-none transition-all focus:border-blue-500/50 focus:bg-white/[0.05] focus:ring-1 focus:ring-blue-500/25"
             />
           </div>
 
@@ -171,7 +171,7 @@ function LoginForm() {
               </label>
               <Link
                 href="#"
-                className="text-xs font-medium text-indigo-400 transition-colors hover:text-indigo-300"
+                className="text-xs font-medium text-blue-400 transition-colors hover:text-blue-300"
               >
                 Forgot password?
               </Link>
@@ -184,7 +184,7 @@ function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 placeholder="Enter your password"
-                className="h-11 w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 pr-11 text-sm text-white placeholder:text-zinc-600 outline-none transition-all focus:border-indigo-500/50 focus:bg-white/[0.05] focus:ring-1 focus:ring-indigo-500/25"
+                className="h-11 w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 pr-11 text-sm text-white placeholder:text-zinc-600 outline-none transition-all focus:border-blue-500/50 focus:bg-white/[0.05] focus:ring-1 focus:ring-blue-500/25"
               />
               <button
                 type="button"
@@ -223,9 +223,9 @@ function LoginForm() {
             <button
               type="submit"
               disabled={loading}
-              className="group relative h-11 w-full overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25 transition-all hover:shadow-xl hover:shadow-indigo-500/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative h-11 w-full overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-xl hover:shadow-blue-500/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" />
               <span className="relative flex items-center justify-center gap-2">
                 {loading ? (
                   <>
@@ -249,7 +249,7 @@ function LoginForm() {
             Don&apos;t have an account?{" "}
             <Link
               href="/signup"
-              className="font-medium text-indigo-400 transition-colors hover:text-indigo-300"
+              className="font-medium text-blue-400 transition-colors hover:text-blue-300"
             >
               Create one
             </Link>
@@ -271,9 +271,9 @@ export default function LoginPage() {
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0b]">
       {/* Animated gradient orbs */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-purple-600/20 blur-[120px] animate-pulse" />
+        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-cyan-600/20 blur-[120px] animate-pulse" />
         <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-blue-600/20 blur-[120px] animate-pulse [animation-delay:1s]" />
-        <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-600/10 blur-[100px] animate-pulse [animation-delay:2s]" />
+        <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-600/10 blur-[100px] animate-pulse [animation-delay:2s]" />
       </div>
 
       {/* Noise texture overlay */}
@@ -289,7 +289,7 @@ export default function LoginPage() {
 
       <Suspense fallback={
         <div className="flex items-center justify-center">
-          <svg className="h-6 w-6 animate-spin text-indigo-400" viewBox="0 0 24 24" fill="none">
+          <svg className="h-6 w-6 animate-spin text-blue-400" viewBox="0 0 24 24" fill="none">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
           </svg>

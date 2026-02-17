@@ -63,7 +63,7 @@ export default function Navbar() {
       <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${
         accent === "emerald"
           ? "from-transparent via-emerald-500/40 to-transparent"
-          : "from-transparent via-indigo-500/40 to-transparent"
+          : "from-transparent via-blue-500/40 to-transparent"
       }`} />
 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2.5 sm:px-8">
@@ -72,14 +72,14 @@ export default function Navbar() {
           <div className={`relative flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg ${
             accent === "emerald"
               ? "bg-gradient-to-br from-emerald-500 to-teal-600 shadow-emerald-500/20 group-hover:shadow-emerald-500/30"
-              : "bg-gradient-to-br from-indigo-500 to-purple-600 shadow-indigo-500/20 group-hover:shadow-indigo-500/30"
+              : "bg-gradient-to-br from-blue-500 to-cyan-600 shadow-blue-500/20 group-hover:shadow-blue-500/30"
           }`}>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
             {/* Glow ring */}
             <div className={`absolute -inset-0.5 rounded-xl opacity-0 blur-sm transition-opacity duration-300 group-hover:opacity-50 ${
-              accent === "emerald" ? "bg-emerald-500" : "bg-indigo-500"
+              accent === "emerald" ? "bg-emerald-500" : "bg-blue-500"
             }`} />
           </div>
           <div className="hidden lg:flex items-center gap-2">
@@ -150,7 +150,7 @@ export default function Navbar() {
                   <div className={`flex h-7 w-7 items-center justify-center rounded-lg text-[11px] font-bold text-white ring-1 ring-white/10 ${
                     isBiz
                       ? "bg-gradient-to-br from-emerald-500 to-teal-600"
-                      : "bg-gradient-to-br from-indigo-500 to-purple-600"
+                      : "bg-gradient-to-br from-blue-500 to-cyan-600"
                   }`}>
                     {initials}
                   </div>
@@ -168,7 +168,7 @@ export default function Navbar() {
                 <div className="absolute right-0 top-full mt-2 w-60 animate-in fade-in slide-in-from-top-1 zoom-in-95 duration-200">
                   {/* Glow effect behind dropdown */}
                   <div className={`absolute -inset-2 rounded-2xl opacity-20 blur-xl ${
-                    accent === "emerald" ? "bg-emerald-500/20" : "bg-indigo-500/20"
+                    accent === "emerald" ? "bg-emerald-500/20" : "bg-blue-500/20"
                   }`} />
                   <div className="relative rounded-2xl border border-white/[0.08] bg-[#141416]/95 backdrop-blur-2xl shadow-2xl shadow-black/60 overflow-hidden">
                     {/* User info */}
@@ -178,7 +178,7 @@ export default function Navbar() {
                           <img src={session.user.image} alt="" className="h-10 w-10 rounded-xl object-cover ring-1 ring-white/10" />
                         ) : (
                           <div className={`flex h-10 w-10 items-center justify-center rounded-xl text-sm font-bold text-white ${
-                            isBiz ? "bg-gradient-to-br from-emerald-500 to-teal-600" : "bg-gradient-to-br from-indigo-500 to-purple-600"
+                            isBiz ? "bg-gradient-to-br from-emerald-500 to-teal-600" : "bg-gradient-to-br from-blue-500 to-cyan-600"
                           }`}>{initials}</div>
                         )}
                         <div className="min-w-0">
@@ -190,9 +190,9 @@ export default function Navbar() {
                         <span className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
                           isBiz
                             ? "bg-emerald-500/10 text-emerald-400"
-                            : "bg-indigo-500/10 text-indigo-400"
+                            : "bg-blue-500/10 text-blue-400"
                         }`}>
-                          <span className={`h-1 w-1 rounded-full ${isBiz ? "bg-emerald-400" : "bg-indigo-400"}`} />
+                          <span className={`h-1 w-1 rounded-full ${isBiz ? "bg-emerald-400" : "bg-blue-400"}`} />
                           {session.user.role === "BUSINESS" ? "Business" : "Consumer"}
                         </span>
                       </div>
@@ -243,9 +243,9 @@ export default function Navbar() {
               </Link>
               <Link
                 href="/signup"
-                className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-1.5 text-sm font-semibold text-white shadow-md shadow-indigo-500/20 transition-all hover:shadow-lg hover:shadow-indigo-500/30 active:scale-[0.97]"
+                className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 px-4 py-1.5 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.97]"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" />
                 <span className="relative">Sign up</span>
               </Link>
             </div>
@@ -272,7 +272,7 @@ function NavPill({
 }) {
   const activeStyles = accent === "emerald"
     ? "bg-emerald-500/15 text-emerald-400 shadow-sm shadow-emerald-500/10"
-    : "bg-indigo-500/15 text-indigo-400 shadow-sm shadow-indigo-500/10";
+    : "bg-blue-500/15 text-blue-400 shadow-sm shadow-blue-500/10";
   const inactiveStyles = "text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.06]";
 
   return (

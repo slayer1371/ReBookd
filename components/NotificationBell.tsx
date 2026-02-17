@@ -160,7 +160,7 @@ export default function NotificationBell() {
             {unreadCount > 0 && (
               <button
                 onClick={markAllRead}
-                className="text-xs text-indigo-400 transition-colors hover:text-indigo-300"
+                className="text-xs text-blue-400 transition-colors hover:text-blue-300"
               >
                 Mark all read
               </button>
@@ -171,7 +171,7 @@ export default function NotificationBell() {
           <div className="max-h-80 overflow-y-auto">
             {loading && notifications.length === 0 ? (
               <div className="flex items-center justify-center py-8">
-                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-indigo-400" />
+                <div className="h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-blue-400" />
               </div>
             ) : notifications.length === 0 ? (
               <div className="py-8 text-center">
@@ -200,14 +200,14 @@ export default function NotificationBell() {
                     setOpen(false);
                   }}
                   className={`block border-b border-white/[0.04] px-4 py-3 transition-colors hover:bg-white/[0.04] ${
-                    !n.read ? "bg-indigo-500/[0.06]" : ""
+                    !n.read ? "bg-blue-500/[0.06]" : ""
                   }`}
                 >
                   <div className="flex items-start gap-3">
                     {/* Notification icon */}
                     <div className={`mt-0.5 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full ${
                       n.type === "NEW_CANCELLATION"
-                        ? "bg-indigo-500/15 text-indigo-400"
+                        ? "bg-blue-500/15 text-blue-400"
                         : n.type === "BOOKING_CONFIRMED"
                         ? "bg-emerald-500/15 text-emerald-400"
                         : "bg-zinc-500/15 text-zinc-400"
@@ -238,7 +238,7 @@ export default function NotificationBell() {
 
                     {/* Unread dot */}
                     {!n.read && (
-                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-indigo-400" />
+                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-blue-400" />
                     )}
                   </div>
                 </Link>
@@ -252,7 +252,7 @@ export default function NotificationBell() {
               <Link
                 href="/notifications"
                 onClick={() => setOpen(false)}
-                className="block text-center text-xs text-zinc-500 transition-colors hover:text-indigo-400"
+                className="block text-center text-xs text-zinc-500 transition-colors hover:text-blue-400"
               >
                 View all notifications →
               </Link>

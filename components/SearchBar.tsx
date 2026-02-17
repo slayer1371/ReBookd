@@ -82,7 +82,7 @@ export default function SearchBar({ placeholder, className }: SearchBarProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={placeholder || "Search businesses, services..."}
-          className="w-full rounded-xl border border-white/10 bg-white/5 py-2 pl-10 pr-4 text-sm text-white placeholder:text-zinc-500 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          className="w-full rounded-xl border border-white/10 bg-white/5 py-2 pl-10 pr-4 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           onFocus={() => {
             if (query.length >= 2 && results) setOpen(true);
           }}
@@ -92,7 +92,7 @@ export default function SearchBar({ placeholder, className }: SearchBarProps) {
         </div>
         {loading && (
           <div className="absolute right-3 top-2.5">
-            <div className="h-4 w-4 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+            <div className="h-4 w-4 animate-spin rounded-full border-2 border-blue-500 border-t-transparent" />
           </div>
         )}
       </div>
@@ -139,7 +139,7 @@ export default function SearchBar({ placeholder, className }: SearchBarProps) {
                       onClick={handleSelect}
                       className="group block rounded-lg p-2 hover:bg-white/5"
                     >
-                      <p className="text-sm font-medium text-white group-hover:text-indigo-400">{svc.name}</p>
+                      <p className="text-sm font-medium text-white group-hover:text-blue-400">{svc.name}</p>
                       <p className="text-xs text-zinc-500">at {svc.business.name}</p>
                     </Link>
                   ))}

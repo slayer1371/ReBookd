@@ -22,7 +22,7 @@ export default function HowItWorks() {
   return (
     <div className="py-24 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -33,11 +33,11 @@ export default function HowItWorks() {
             <div className="space-y-12">
               {STEPS.map((step, i) => (
                 <div key={i} className="flex gap-6 group">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-lg font-bold text-white group-hover:bg-indigo-500 group-hover:border-indigo-500 transition-all duration-300">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-lg font-bold text-white group-hover:bg-blue-500 group-hover:border-blue-500 transition-all duration-300">
                     {step.number}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-indigo-400 transition-colors">
+                    <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">
                       {step.title}
                     </h3>
                     <p className="text-zinc-400 leading-relaxed">
@@ -67,7 +67,7 @@ export default function HowItWorks() {
                   </div>
 
                   {/* Floating badge */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-indigo-600 px-6 py-3 rounded-xl shadow-xl shadow-indigo-600/40 animate-pulse">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 px-6 py-3 rounded-xl shadow-xl shadow-blue-600/40 animate-pulse">
                     <span className="text-white font-bold">Booked!</span>
                   </div>
                </div>

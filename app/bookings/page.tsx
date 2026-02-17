@@ -86,7 +86,7 @@ export default function BookingsPage() {
   if (loading || !session) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-2 border-indigo-500 border-t-transparent" />
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-blue-500 border-t-transparent" />
       </div>
     );
   }
@@ -101,8 +101,8 @@ export default function BookingsPage() {
   return (
     <div className="relative min-h-screen bg-[#0a0a0b]">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">
-        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-indigo-600/8 blur-[140px]" />
-        <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-purple-600/8 blur-[140px]" />
+        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-blue-600/8 blur-[140px]" />
+        <div className="absolute -bottom-32 -right-32 h-[500px] w-[500px] rounded-full bg-cyan-600/8 blur-[140px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-3xl px-4 py-8 sm:px-8">
@@ -115,7 +115,7 @@ export default function BookingsPage() {
               <span className="text-5xl">📭</span>
               <p className="mt-4 text-sm text-zinc-400">No bookings yet</p>
               <p className="mt-1 text-xs text-zinc-600">Browse deals and book your first discounted appointment</p>
-              <Link href="/" className="mt-4 inline-block rounded-xl bg-indigo-600 px-5 py-2 text-sm font-medium text-white hover:bg-indigo-500">
+              <Link href="/" className="mt-4 inline-block rounded-xl bg-blue-600 px-5 py-2 text-sm font-medium text-white hover:bg-blue-500">
                 Browse deals
               </Link>
             </div>
@@ -178,7 +178,7 @@ function BookingCard({ booking, onUpdate }: { booking: Booking; onUpdate: () => 
             )}
           </div>
           <p className="text-xs text-zinc-500">
-            <Link href={`/b/${c.business.slug}`} className="hover:text-indigo-400 hover:underline">
+            <Link href={`/b/${c.business.slug}`} className="hover:text-blue-400 hover:underline">
               {c.business.name}
             </Link>{" "}
             · {c.business.address}, {c.business.city}
